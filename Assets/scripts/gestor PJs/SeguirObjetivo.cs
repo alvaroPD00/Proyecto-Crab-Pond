@@ -21,6 +21,13 @@ public class SeguirObjetivo : MonoBehaviour
         {
             agente.SetDestination(destinoMasCercano.position);
         }
+        else
+        {
+            if (!agente.pathPending && agente.hasPath)
+            {
+                agente.ResetPath(); // Detener si no hay objetivo
+            }
+        }
     }
 
     Transform ObtenerObjetivoMasCercano()

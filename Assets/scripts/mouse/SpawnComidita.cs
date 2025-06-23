@@ -33,7 +33,8 @@ public class SpawnComidita : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                int spawnCount = Mathf.RoundToInt(holdTime * particlesPerSecond);
+                int spawnCount = Mathf.Max(1, Mathf.RoundToInt(holdTime * particlesPerSecond));
+
 
                 // Usamos las coordenadas X y Z del hit, pero con altura fija Y
                 Vector3 posicionFinal = new Vector3(hit.point.x, alturaSpawn, hit.point.z);
