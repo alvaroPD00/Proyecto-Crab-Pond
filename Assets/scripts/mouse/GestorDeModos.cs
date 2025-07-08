@@ -3,22 +3,21 @@ using UnityEngine.UI;
 
 public class GestorDeModos : MonoBehaviour
 {
-    [Header("Objetos a alternar")]
-    public GameObject modoA;
-    public GameObject modoB;
+    [Header("Elementos a alternar")]
+    public MonoBehaviour scriptA;  // Componente que se activa en modo A
+    public GameObject objetoB;     // GameObject que se activa en modo B
 
-    [Header("Modo inicial (true = modoB activo)")]
+    [Header("Modo inicial (true = modo B activo)")]
     public bool modoInicialActivadoB = false;
 
     [Header("Toggle asociado (opcional)")]
-    public Toggle toggle; // Asignalo solo si querés que el script controle también el estado visual del botón
+    public Toggle toggle;
 
     void Start()
     {
-        // Setear estado inicial
+        // Setear el estado inicial
         CambiarModo(modoInicialActivadoB);
 
-        // Si hay un Toggle vinculado, sincronizar su valor
         if (toggle != null)
         {
             toggle.isOn = modoInicialActivadoB;
@@ -27,12 +26,12 @@ public class GestorDeModos : MonoBehaviour
     }
 
     /// <summary>
-    /// Cambia el estado de los objetos según el valor del toggle.
-    /// true = modoB activo, false = modoA activo
+    /// Cambia entre activar el scriptA o el objetoB.
+    /// true = modo B activo, false = modo A activo
     /// </summary>
-    public void CambiarModo(bool estado)
+    public void CambiarModo(bool activarModoB)
     {
-        if (modoA != null) modoA.SetActive(!estado);
-        if (modoB != null) modoB.SetActive(estado);
+        if (scriptA != null) scriptA.enabled = !activarModoB;
+        if (objetoB != null) objetoB.SetActive(activarModoB);
     }
 }

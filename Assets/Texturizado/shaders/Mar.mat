@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Mar
+  m_Shader: {fileID: -6465566751694194690, guid: 63cbe96fb3669814687de70ad8b6527e, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _SampleTexture2DArray_883e086f2fc14f1b962d6e253c3892fe_TextureArray_1_Texture2DArray:
+        m_Texture: {fileID: 18700000, guid: b51af16b27bc2994aae55368ff384a73, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TexturArray:
+        m_Texture: {fileID: 18700000, guid: 2609dbf75e311ba41af32f8e532bff6a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TexturaTOP:
+        m_Texture: {fileID: 2800000, guid: e501bf68fceaaa140947a63476028c8a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ContrasteTop: 0
+    - _DendisadOleaje: 3
+    - _DendisasOleaje: 5
+    - _DistordVelocidad: 6.3
+    - _EditarTOP: 1
+    - _EscalaTOP: 0.15
+    - _FadeTop: 0.58
+    - _MareaVelocidad: 0.2
+    - _Metallic: 0
+    - _OleajeHorizontal: 0.5
+    - _OleajeVelocidad: 0.15
+    - _Power_Espuma: 2
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Smoothness: 0.45
+    - _Te_irTop: 1.33
+    - _VelocidadArray: 0
+    m_Colors:
+    - _MarColor1: {r: 0, g: 1, b: 1, a: 0}
+    - _MarColor2: {r: 0.1666665, g: 0, b: 1, a: 0}
+    - _TinteTop: {r: 0.2980392, g: 0.41369885, b: 1, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
+--- !u!114 &521023681442029559
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 9
