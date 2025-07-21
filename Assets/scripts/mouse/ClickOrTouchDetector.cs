@@ -3,7 +3,7 @@ using UnityEngine;
 public class ClickOrTouchDetector : MonoBehaviour
 {
     private RaycastTagBlocker bloqueador;
-    private ObjetoClickeable objetoPresionado;
+    private CrabData objetoPresionadoData;
 
     void Start()
     {
@@ -12,62 +12,74 @@ public class ClickOrTouchDetector : MonoBehaviour
 
     void Update()
     {
-        // Mouse
+        // --- MOUSE ---
         if (Input.GetMouseButtonDown(0))
         {
-            objetoPresionado = DetectarObjeto(Input.mousePosition);
-            objetoPresionado?.AvisarPresionado();
+            DetectarPresionado(Input.mousePosition);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            var objetoSoltado = DetectarObjeto(Input.mousePosition);
-            if (objetoSoltado != null && objetoSoltado == objetoPresionado)
-            {
-                objetoSoltado.AvisarSoltado();
-            }
-            objetoPresionado = null;
+            DetectarSoltado(Input.mousePosition);
+            objetoPresionadoData = null;
         }
 
-        // Touch
+        // --- TOUCH ---
         if (Input.touchCount > 0)
         {
             Touch toque = Input.GetTouch(0);
+
             if (toque.phase == TouchPhase.Began)
             {
-                objetoPresionado = DetectarObjeto(toque.position);
-                objetoPresionado?.AvisarPresionado();
+                DetectarPresionado(toque.position);
             }
+
             if (toque.phase == TouchPhase.Ended)
             {
-                var objetoSoltado = DetectarObjeto(toque.position);
-                if (objetoSoltado != null && objetoSoltado == objetoPresionado)
-                {
-                    objetoSoltado.AvisarSoltado();
-                }
-                objetoPresionado = null;
+                DetectarSoltado(toque.position);
+                objetoPresionadoData = null;
             }
+
             if (toque.phase == TouchPhase.Canceled || toque.phase == TouchPhase.Moved)
             {
-                objetoPresionado = null;
+                objetoPresionadoData = null;
             }
         }
     }
 
-    ObjetoClickeable DetectarObjeto(Vector2 posicionPantalla)
+    void DetectarPresionado(Vector2 posicionPantalla)
+    {
+        GameObject obj = DetectarObjeto(posicionPantalla);
+        if (obj == null) return;
+
+        objetoPresionadoData = obj.GetComponent<CrabData>();
+    }
+
+    void DetectarSoltado(Vector2 posicionPantalla)
+    {
+        GameObject obj = DetectarObjeto(posicionPantalla);
+        if (obj == null) return;
+
+        if (obj.GetComponent<CrabData>() == objetoPresionadoData)
+        {
+            objetoPresionadoData?.MostrarInfo();
+        }
+    }
+
+    GameObject DetectarObjeto(Vector2 posicionPantalla)
     {
         Ray ray = Camera.main.ScreenPointToRay(posicionPantalla);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            GameObject objetoImpactado = hit.collider.gameObject;
+            GameObject objeto = hit.collider.gameObject;
 
             if (bloqueador != null && bloqueador.gameObject.activeInHierarchy)
             {
-                if (bloqueador.DeberiaBloquear(objetoImpactado))
+                if (bloqueador.DeberiaBloquear(objeto))
                     return null;
             }
 
-            return objetoImpactado.GetComponent<ObjetoClickeable>();
+            return objeto;
         }
 
         return null;
